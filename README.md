@@ -1,6 +1,4 @@
 # 590x_HW2
-Codes are in src folder
+Figure 1 and its code are in src_1 folder
 
-Figures are in img folder
-
-Data/resource are in data folder
+Figure 2 and its code are in src_2 folder
