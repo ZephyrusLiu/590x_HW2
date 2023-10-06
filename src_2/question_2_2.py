@@ -1,5 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+from scipy import stats
 
 wind_capacity = pd.read_excel("3_2_Wind_Y2019.xlsx")
 generation = pd.read_excel("annual_generation_state.xls")
@@ -37,16 +38,28 @@ data_combine = pd.merge(state_nameplate, state_wind_generation, on='State')
 #Calculate capacity factor. (remember MW -> MWh)
 data_combine['Capacity_Factor'] = data_combine['Wind_Total'] / (data_combine['Capacity'] * 24 * 365) * 100
 
-#Combine wind and total
-generation_combine = pd.merge(state_wind_generation, state_generation, on='State', how='outer')
+#Combine with total
+generation_combine = pd.merge(data_combine, state_generation, on='State', how='outer')
 #Fill 0 to those states don't do wind generation
 generation_combine = generation_combine.fillna(0)
 #Calculate total % of generation from wind (in %)
-generation_combine['wind_percent'] = (generation_combine['Wind_Total'] / generation_combine['Total']) * 100
+generation_combine['Wind_percent'] = (generation_combine['Wind_Total'] / generation_combine['Total']) * 100
+
+#Show the figure
+plt.figure(figsize=(12, 8))
+plt.scatter(generation_combine['Wind_percent'], generation_combine['Capacity_Factor'])
+
+slope, intercept, r_value, p_value, std_err = stats.linregress(generation_combine['Wind_percent'], generation_combine['Capacity_Factor'])
+line = slope * generation_combine['Wind_percent'] + intercept
+plt.plot(generation_combine['Wind_percent'], line, color='red', label=f'Line of Best Fit (R^2={r_value**2:.2f})')
 
 
-# #Sort
-# sorted = data_combine.sort_values(by='Capacity_Factor', ascending=False)
+plt.xlabel('Generation from Wind %')
+plt.ylabel('Capacity Factor %')
+plt.title('Scatter Plot for Comparing Generation from Wind and Wind Capacity Factor')
+plt.legend()
 
-
-print(generation_combine)
+#Add caption
+caption1 = 'Figure 2: This figure displays the relationship between capacity factor of each U.S. and its Generation from Wind'
+plt.text(0.5, -0.1, caption1, transform=plt.gca().transAxes, fontsize=10, ha='center', va='center', multialignment='center')
+plt.show()
