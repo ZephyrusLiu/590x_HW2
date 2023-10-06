@@ -60,6 +60,6 @@ plt.title('Scatter Plot for Comparing Generation from Wind and Wind Capacity Fac
 plt.legend()
 
 #Add caption
-caption1 = 'Figure 2: This figure displays the relationship between capacity factor of each U.S. and its Generation from Wind'
-plt.text(0.5, -0.1, caption1, transform=plt.gca().transAxes, fontsize=10, ha='center', va='center', multialignment='center')
+caption1 = 'Figure 1: This figure displays the capacity factor of each U.S. state. \nThe differences in wind capacity factor among states vary significantly depending on their reliance on and percentage of generation from wind.'
+plt.text(0, -0.1, caption1, transform=plt.gca().transAxes, fontsize=10, ha='left', va='center', multialignment='left')
 plt.show()

@@ -37,6 +37,6 @@ plt.xlabel('States')
 plt.ylabel('Capacity Factor %')
 plt.title('2019 Annual State-level Capacity Factor (High to low in %)')
 #Add caption
-caption1 = 'Figure 1: This figure displays the capacity factor of each U.S. state. \nThe differences in wind capacity factor among states vary significantly depending on their reliance on and percentage of generation from wind.'
-plt.text(0, -0.1, caption1, transform=plt.gca().transAxes, fontsize=10, ha='left', va='center', multialignment='left')
+caption = 'Figure 1: This figure displays the capacity factor of each U.S. state. \nThe differences in wind capacity factor among states vary significantly depending on their reliance on and percentage of generation from wind.'
+plt.text(0, -0.1, caption, transform=plt.gca().transAxes, fontsize=10, ha='left', va='center', multialignment='left')
 plt.show()
