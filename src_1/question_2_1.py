@@ -34,7 +34,7 @@ sorted = data_combine.sort_values(by='Capacity_Factor', ascending=False)
 plt.figure(figsize=(12, 8))
 plt.bar(sorted['State'], sorted['Capacity_Factor'])
 plt.xlabel('States')
-plt.ylabel('Capacity Factor (in %)')
+plt.ylabel('Capacity Factor %)')
 plt.title('State-level Capacity Factor (High to low in %)')
 #Add caption
 caption1 = 'Figure 1: This figure displays the capacity factor of each U.S. state. The capacity factor represents the efficiency of wind power generation.'

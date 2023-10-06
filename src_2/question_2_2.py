@@ -42,6 +42,7 @@ generation_combine = pd.merge(state_wind_generation, state_generation, on='State
 #Fill 0 to those states don't do wind generation
 generation_combine = generation_combine.fillna(0)
 #Calculate total % of generation from wind (in %)
+generation_combine['wind_percent'] = (generation_combine['Wind_Total'] / generation_combine['Total']) * 100
 
 
 # #Sort
