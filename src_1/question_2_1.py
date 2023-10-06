@@ -11,7 +11,6 @@ state_nameplate = OP.groupby('Unnamed: 4')['Unnamed: 12'].sum().reset_index()
 state_nameplate.rename(columns={'Unnamed: 4': 'State'}, inplace=True)
 state_nameplate.rename(columns={'Unnamed: 12': 'Capacity'}, inplace=True)
 
-
 #Get 2019 generation
 wind_2019 = generation[generation['State Historical Tables for 2022\nReleased: September 2023\nNext Update: October 2024'] == 2019]
 #Get 2019 total wind generation
